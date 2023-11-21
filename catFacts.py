@@ -21,11 +21,19 @@ def GetCatFacts(_amount):
     for fact in response:
         list_catFacts.append(fact['text'])
     
-    print (response)
+    #print (response)
     #print (response['status'])
     #print (response['text'])
-    return list_catFacts
+    df = pd.DataFrame(list_catFacts, columns=['text'])
+    df['newColumn'] = "cat fact"
+    # to get a specific value
+    #one_val = df.iloc[2,0]
+    # to get a specific row, colon means everything in that row
+    #one_row = df.iloc[0, :]
+    #return one_row
 
-CAT_FACTS = GetCatFacts(2)
+    return df
+
+CAT_FACTS = GetCatFacts(10)
 
 print (CAT_FACTS)
